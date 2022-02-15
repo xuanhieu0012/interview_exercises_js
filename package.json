@@ -1,0 +1,14 @@
+{
+  "name": "interview_exercises_js",
+  "version": "1.0.0",
+  "description": "Interview coding exercises",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha csv.spec.js"
+  },
+  "author": "S5 Stratos",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "mocha": "^9.2.0"
+  }
+}
