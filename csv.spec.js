@@ -45,8 +45,8 @@ describe('csv', function () {
             )
         });
         it('should parse quoted csv', function () {
-            const str = slurp('basic_pipe.csv');
-            const result = csv.parse(str, {delim: '|'});
+            const str = slurp('quoted.csv');
+            const result = csv.parse(str);
             assert.deepEqual(
                 result,
                 [
