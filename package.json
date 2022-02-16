@@ -6,6 +6,9 @@
   "scripts": {
     "test": "mocha csv.spec.js"
   },
+  "engines": {
+    "node": ">=0.12"
+  },
   "author": "S5 Stratos",
   "license": "UNLICENSED",
   "devDependencies": {
