@@ -4,37 +4,46 @@ const CRLF = /\r?\n/;
 function parse(content, options) {
     let array = content.split('\n')
     let array2 =[]
-
+    
+    // first iterate array to get each sentence
     for(let i =0; i < array.length; i++){
-       
+        // split each sentence into array
         let splitStringToArray = array[i].split(options ? options.delim : ',')
-        console.log(222,splitStringToArray)
+        let array1 = []
+        // iterate each word in the array after split line 11
         for(let j = 0; j < splitStringToArray.length; j++){
+            // check if word[0] === quotes and next word in array has quotes
+            if(splitStringToArray[j][0] === '"' && splitStringToArray[j + 1].includes('"')){
+                //if true combine two words together and use split to eliminate double quotes and push to array 1
+                array1.push((splitStringToArray[j] + ',' + splitStringToArray[j + 1]).slice(1,-1))
             
-            if(splitStringToArray[j].includes('"') && splitStringToArray[j]!== ','){
-               console.log( 1,splitStringToArray[j]+',' +splitStringToArray[j+1])
+            }
+            // check word if it's not includes quotes
+            else if(!splitStringToArray[j].includes('"')){
+                // if false just push word back to array 1
+                array1.push(splitStringToArray[j])
             }
         }
-        // if(splitStringToArray.includes('"'))
-        array2.push(splitStringToArray)
-        
+        // push array1 into array2 after manipulate them in right format
+        array2.push(array1)
     }
+    
     const array3 = array2.slice(0, array.length -1)
+    
 
-    //  for(let j = 1; j < array3.length-1  ; j++){
-         
-    //         if(array3[j].length !== array3[j+1].length){
-    //             throw "it's not equal width'"
-    //         }
-    // }
+    for(let j = 1; j < array3.length-1  ; j++){
+    
+            if(array3[j].length !== array3[j+1].length){
+                throw "it's not equal width'"
+            }
+    }
 
-    // console.log(1, array3)
+    
     
     return array3
 }
 
 function parseRecords(content, options) {
-    
     const internal = parse(content, options);
     
     let object = []
